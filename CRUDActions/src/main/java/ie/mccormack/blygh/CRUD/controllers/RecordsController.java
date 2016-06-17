@@ -20,6 +20,18 @@ public class RecordsController {
     private RecordRepository repository;
 
     @RequestMapping(value="", method=RequestMethod.GET)
+    public String home(Model model) {
+       
+        return "records/home";
+    }
+    
+    @RequestMapping(value="/home", method=RequestMethod.GET)
+    public String homelanding(Model model) {
+       
+        return "records/home";
+    }
+    
+    @RequestMapping(value="/list", method=RequestMethod.GET)
     public String listRecords(Model model) {
         model.addAttribute("records", repository.findAll());
         return "records/list";
@@ -48,7 +60,7 @@ public class RecordsController {
     	record.setDob(dob);
     	record.setNumber(number);
     	repository.save(record);
-        return new ModelAndView("redirect:/records");
+        return new ModelAndView("redirect:/records/list");
     }
 
     
@@ -63,7 +75,7 @@ public class RecordsController {
     	record.setDob(dob);
     	record.setNumber(number);
     	repository.save(record);
-        return new ModelAndView("redirect:/records");
+        return new ModelAndView("redirect:/records/list");
     }
 
     @RequestMapping(value = "/{id}/editRecord", method = RequestMethod.GET)
