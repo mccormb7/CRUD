@@ -1,0 +1,72 @@
+<html layout:decorator="layout">
+<div layout:fragment="content">
+
+
+	<form class="form-horizontal"  method="record" name="comment_form" id="comment_form"
+		action="/records/create" role="form">
+		<fieldset>
+			<div id="legend">
+				<legend class="">Create Record</legend>
+			</div>
+			
+			
+			
+			<div class="control-group">
+				<!-- Username -->
+				<label class="control-label" for="username">Name*</label>
+				
+				<div class="controls">
+				
+					<input type="text" id="name" name="name" placeholder=""
+						class="input-xlarge"/>
+						
+					<p class="help-block">Max 25 characters</p>
+				</div>
+			</div>
+
+			<div class="control-group">
+				<!-- E-mail -->
+				<label class="control-label" for="email">PPS Number*</label>
+				<div class="controls">
+					<input type="text" id="pps" name="pps" placeholder=""
+						class="input-xlarge"/>
+					<p class="help-block">Must be unique</p>
+				</div>
+			</div>
+			
+			<div class="control-group">
+				<!-- E-mail -->
+				<label class="control-label" for="email">Date of Birth*</label>
+				<div class="controls">
+					<input type="text" id="dob" name="dob" placeholder=""
+						class="input-xlarge"/>
+					<p class="help-block">Must be over 16</p>
+				</div>
+			</div>
+			
+			<div class="control-group">
+				<!-- E-mail -->
+				<label class="control-label" for="email">Mobile Phone Number</label>
+				<div class="controls">
+					<input type="text" id="number" name="number" placeholder=""
+						class="input-xlarge"/>
+					<p class="help-block">Must start with 08</p>
+				</div>
+			</div>
+
+			
+
+			<div class="control-group">
+				<!-- Button -->
+				<div class="controls">
+					<button class="btn btn-success">Create Record</button>
+				</div>
+			</div>
+		</fieldset>
+	</form>
+
+
+
+
+</div>
+</html>

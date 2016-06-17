@@ -1,0 +1,49 @@
+<html layout:decorator="layout">
+<!-- injects content into page -->
+<div layout:fragment="content">
+
+    <a class="btn btn-primary" href="/records/newRecord">Add new Record</a>
+
+    <table class="table table-striped" id="records_list">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>PPSN</th>
+            <th>DOB</th>
+            <th>Mobile Number</th>
+            <th>Action</th>
+            <th></th>
+        </tr>
+        </thead>
+        
+        <tbody>
+		<!-- displays contents of record object -->        
+        <tr data-th-each="record : ${records}">
+        
+            <td class="name" data-th-text="${record.name}"></td>
+            <td class="pps" data-th-text="${record.pps}"></td>
+            <td class="dob" data-th-text="${record.dob}"></td>
+            <td class="number" data-th-text="${record.number}"></td>
+            
+
+            <td>
+                <a th:href="@{'/records/{id}/delete'(id=${record.id})}" class="delete" th:attr="name=${record.message}">
+                        <span class="fa-stack">
+                            <i class="glyphicon glyphicon-trash"></i>
+                        </span>
+                </a>
+            </td>
+
+            <td>
+                <a th:href="@{'/records/{id}/edit'(id=${record.id})}" class="edit" th:attr="name=${record.message}">
+                    <span class="fa-stack">
+                        <i class="glyphicon glyphicon-edit"></i>
+                    </span>
+
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</html>
