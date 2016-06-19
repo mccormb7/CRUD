@@ -2,24 +2,28 @@
 <div layout:fragment="content">
 
 
-	<form class="form-horizontal"  method="record" name="comment_form" id="comment_form"
-		action="/records/create" role="form">
+	<form class="form-horizontal" method="post" name="comment_form"
+		id="comment_form" th:object="${record}" action="/records/create"
+		role="form">
 		<fieldset>
 			<div id="legend">
 				<legend class="">Create Record</legend>
 			</div>
-			
-			
-			
+
+
+
 			<div class="control-group">
 				<!-- Username -->
 				<label class="control-label" for="username">Name*</label>
-				
+
 				<div class="controls">
-				
+
 					<input type="text" id="name" name="name" placeholder=""
-						class="input-xlarge"/>
-						
+						class="input-xlarge" /> <font color="red">
+						<td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name
+							Error</td>
+					</font>
+
 					<p class="help-block">Max 25 characters</p>
 				</div>
 			</div>
@@ -29,32 +33,50 @@
 				<label class="control-label" for="email">PPS Number*</label>
 				<div class="controls">
 					<input type="text" id="pps" name="pps" placeholder=""
-						class="input-xlarge"/>
+						class="input-xlarge" /> <font color="red">
+						<td colth:if="${#fields.hasErrors('pps')}" th:errors="*{pps}">pss
+							Error</td>
+					</font>
 					<p class="help-block">Must be unique</p>
 				</div>
 			</div>
-			
+
+
+			<!--  <div class="control-group input"
+          th:class="${#fields.hasErrors('email')}? 'control-group input error'">
+          <input type="text" th:field="*{email}" placeholder="Email" />
+          <span class="help-block" th:if="${#fields.hasErrors('email')}"
+            th:errors="*{email}"></span>
+        </div> -->
+
 			<div class="control-group">
 				<!-- E-mail -->
 				<label class="control-label" for="email">Date of Birth*</label>
 				<div class="controls">
 					<input type="text" id="dob" name="dob" placeholder=""
-						class="input-xlarge"/>
+						class="input-xlarge" />
 					<p class="help-block">Must be over 16</p>
 				</div>
 			</div>
-			
+
 			<div class="control-group">
 				<!-- E-mail -->
 				<label class="control-label" for="email">Mobile Phone Number</label>
 				<div class="controls">
 					<input type="text" id="number" name="number" placeholder=""
-						class="input-xlarge"/>
+						class="input-xlarge" /> <font color="red">
+						<td colth:if="${#fields.hasErrors('number')}" th:errors="*{number}">Number
+							Error</td>
+					</font>
 					<p class="help-block">Must start with 08</p>
 				</div>
-			</div>
 
-			
+
+			</div>
+			<!--  
+			 <div class="error">
+										<sf:errors path="username"></sf:errors>
+									</div>-->
 
 			<div class="control-group">
 				<!-- Button -->
@@ -64,7 +86,6 @@
 			</div>
 		</fieldset>
 	</form>
-
 
 
 

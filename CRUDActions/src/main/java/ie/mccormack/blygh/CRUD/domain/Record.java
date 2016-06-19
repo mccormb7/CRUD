@@ -6,35 +6,46 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+//import org.apache.commons.codec.language.bm.PhoneticEngine;
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.social.linkedin.api.PhoneNumber;
 
 @Entity
 public class Record {
 
-    @Id
-    //auto increment field
-    @GeneratedValue(strategy = GenerationType.AUTO)
+	//auto increment field
+	  //no duplicates
+	    //will be primary key
+    @Id  //primary key annotation
+    private String pps;
+    //@GeneratedValue(strategy = GenerationType.AUTO)
     
     
-    private long id;
-    
-    
+   // private long id;
+     
     //max 25 char
+    @NotNull
+    @Size(min = 3, max = 25 , message = "Must be between 3 and 25 characters ")
     private String name;
     
-    //no duplicates
-    //will be primary key
-    private String pps;
+    
     
     //dd/mm/yy
     //must be over 16
+    //@DateTimeFormat(pattern="MM/dd/yyyy")
+    @NotNull
     private String dob;
     
     //date record was created
-    private Date created;
+    private String created;
     
     //must begin with 08
     //not required
-    private Double number;
+   // @PhoneticEngine
+    private String number;
     
     
     
@@ -54,7 +65,7 @@ public class Record {
 		this.dob = dob;
 	}
 
-	public Record(String name, String pps, String dob, Double number) {
+	public Record(String name, String pps, String dob, String number) {
 		this.name = name;
 		this.pps = pps;
 		this.dob = dob;
@@ -85,29 +96,21 @@ public class Record {
 		this.dob = dob;
 	}
 
-	public Date getCreated() {
+	public String getCreated() {
 		return created;
 	}
 
-	public void setCreated(Date created) {
+	public void setCreated(String created) {
 		this.created = created;
 	}
 
-	public Double getNumber() {
+	public String getNumber() {
 		return number;
 	}
 
-	public void setNumber(Double number) {
+	public void setNumber(String number) {
 		this.number = number;
 	}
 
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public long getId() {
-        return id;
-    }
-
-
+	
 }
