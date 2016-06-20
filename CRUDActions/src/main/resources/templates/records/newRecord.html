@@ -10,8 +10,6 @@
 				<legend class="">Create Record</legend>
 			</div>
 
-
-
 			<div class="control-group">
 				<!-- Username -->
 				<label class="control-label" for="username">Name*</label>
@@ -41,23 +39,23 @@
 				</div>
 			</div>
 
-
-			<!--  <div class="control-group input"
-          th:class="${#fields.hasErrors('email')}? 'control-group input error'">
-          <input type="text" th:field="*{email}" placeholder="Email" />
-          <span class="help-block" th:if="${#fields.hasErrors('email')}"
-            th:errors="*{email}"></span>
-        </div> -->
-
 			<div class="control-group">
 				<!-- E-mail -->
 				<label class="control-label" for="email">Date of Birth*</label>
 				<div class="controls">
-					<input type="text" id="dob" name="dob" placeholder=""
-						class="input-xlarge" />
-					<p class="help-block">Must be over 16</p>
+
+					<input type='date' id="dob" name='dob'
+						class="glyphicon glyphicon-calendar" /> <font color="red">
+						<td colth:if="${#fields.hasErrors('dob')}" th:errors="*{dob}">DOB
+							Error</td>
+					</font>
+
+					<div class="container">
+						<p class="help-block">Must be over 16</p>
+					</div>
 				</div>
 			</div>
+
 
 			<div class="control-group">
 				<!-- E-mail -->
@@ -65,18 +63,14 @@
 				<div class="controls">
 					<input type="text" id="number" name="number" placeholder=""
 						class="input-xlarge" /> <font color="red">
-						<td colth:if="${#fields.hasErrors('number')}" th:errors="*{number}">Number
-							Error</td>
+						<td colth:if="${#fields.hasErrors('number')}"
+						th:errors="*{number}">Number Error</td>
 					</font>
 					<p class="help-block">Must start with 08</p>
 				</div>
 
 
 			</div>
-			<!--  
-			 <div class="error">
-										<sf:errors path="username"></sf:errors>
-									</div>-->
 
 			<div class="control-group">
 				<!-- Button -->

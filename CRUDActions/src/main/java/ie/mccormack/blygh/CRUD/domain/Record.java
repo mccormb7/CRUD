@@ -1,62 +1,43 @@
 package ie.mccormack.blygh.CRUD.domain;
 
-import java.util.Date;
-
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 //import org.apache.commons.codec.language.bm.PhoneticEngine;
 import org.hibernate.validator.constraints.NotEmpty;
-import org.springframework.social.linkedin.api.PhoneNumber;
 
 @Entity
 public class Record {
 
-	//auto increment field
-	  //no duplicates
-	    //will be primary key
-    @Id  //primary key annotation
-    private String pps;
-    //@GeneratedValue(strategy = GenerationType.AUTO)
-    
-    
-   // private long id;
-     
-    //max 25 char
-    @NotNull
-    @Size(min = 3, max = 25 , message = "Must be between 3 and 25 characters ")
-    private String name;
-    
-    
-    
-    //dd/mm/yy
-    //must be over 16
-    //@DateTimeFormat(pattern="MM/dd/yyyy")
-    @NotNull
-    private String dob;
-    
-    //date record was created
-    private String created;
-    
-    //must begin with 08
-    //not required
-   // @PhoneticEngine
-    private String number;
-    
-    
-    
-    
-    public Record(){
-    }
+	// no duplicates
+	// will be primary key
+	// primary key annotation
+	@Id
+	@NotNull(message = "Must Not be Null ")
+	private String pps;
 
+	// max 25 char
+	// can not be null
+	@NotNull
+	@Size(min = 3, max = 25, message = "Must be between 3 and 25 characters ")
+	private String name;
 
-    
-    
+	// dd/mm/yy
+	// must be over 16
+	@NotEmpty(message = "Must Not be Null ")
+	private String dob;
 
+	// date record was created
+	private String created;
+
+	// must begin with 08
+	// not required
+	private String number;
+
+	public Record() {
+	}
 
 	public Record(String name, String pps, String dob) {
 
@@ -112,5 +93,4 @@ public class Record {
 		this.number = number;
 	}
 
-	
 }

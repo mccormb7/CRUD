@@ -2,50 +2,42 @@
 <!-- injects content into page -->
 <div layout:fragment="content">
 
-    <a class="btn btn-primary" href="/records/newRecord">Add new Record</a>
+	<a class="btn btn-primary" href="/records/newRecord">Add new Record</a>
 
-    <table class="table table-striped" id="records_list">
-        <thead>
-        <tr>
-            <th>Name</th>
-            <th>PPSN</th>
-            <th>DOB</th>
-            <th>Mobile Number</th>
-            <th>Date Created</th>
-            <th></th>
-        </tr>
-        </thead>
-        
-        <tbody>
-		<!-- displays contents of record object -->        
-        <tr data-th-each="record : ${records}">
-        
-            <td class="name" data-th-text="${record.name}"></td>
-            <td class="pps" data-th-text="${record.pps}"></td>
-            <td class="dob" data-th-text="${record.dob}"></td>
-            <td class="number" data-th-text="${record.number}"></td>
-            <td class="created" data-th-text="${record.created}"></td>
-            
-<!--  
-            <td>
-                <a th:href="@{'/records/{id}/delete'(id=${record.id})}" class="delete" th:attr="name=${record.message}">
-                        <span class="fa-stack">
-                            <i class="glyphicon glyphicon-trash"></i>
-                        </span>
-                </a>
-            </td>
+	<div th:if="!${#lists.isEmpty(records)}">
+		<table class="table table-striped" id="records_list">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>PPSN</th>
+					<th>DOB</th>
+					<th>Mobile Number</th>
+					<th></th>
+				</tr>
+			</thead>
 
-            <td>
-                <a th:href="@{'/records/{id}/edit'(id=${record.id})}" class="edit" th:attr="name=${record.message}">
-                    <span class="fa-stack">
-                        <i class="glyphicon glyphicon-edit"></i>
-                    </span>
+			<tbody>
+				<!-- displays contents of record object -->
+				<tr data-th-each="record : ${records}">
 
-                </a>
-            </td>
-            -->
-        </tr>
-        </tbody>
-    </table>
+					<td class="name" data-th-text="${record.name}"></td>
+					<td class="pps" data-th-text="${record.pps}"></td>
+					<td class="dob" data-th-text="${record.dob}"></td>
+					<td class="number" data-th-text="${record.number}"></td>
+
+					<td><a th:href="@{'/records/{id}/delete'(id=${record.pps})}"
+						class="delete" th:attr="name=${record.pps}"> <span
+							class="fa-stack"> <i class="glyphicon glyphicon-trash"></i>
+						</span>
+					</a></td>
+
+
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div th:if="${#lists.isEmpty(records)}">
+		<p>No records have been created</p>
+	</div>
 </div>
 </html>
